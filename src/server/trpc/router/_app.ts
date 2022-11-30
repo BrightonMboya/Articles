@@ -7,7 +7,7 @@ export const appRouter = router({
   example: exampleRouter,
   auth: authRouter,
   article: articleRouter,
-  healthCheck: publicProcedure.query(() => "Yay!!"),
+  healthcheck: publicProcedure.query(() => "Yay!!"),
 });
 
 // export type definition of API

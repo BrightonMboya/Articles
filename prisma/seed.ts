@@ -12,7 +12,7 @@ async function main() {
             id: firstArticleId,
             title: "Hello World",
             description: "This is an example post from Prisma Seed",
-            imageUrl: "https://unsplash.com/photos/fdnsLFbegeQ",
+            // imageUrl: "https://unsplash.com/photos/fdnsLFbegeQ",
             externalUrl: "https://create.t3.gg/"
         },
         update: {}

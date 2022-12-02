@@ -26,7 +26,7 @@ const Add = () => {
             const input: Input = {
               title: values.title as string,
               description: values.description as string,
-              imageUrl: values.imageUrl as string,
+              // imageUrl: values.imageUrl as string,
               externalUrl: values.external as string,
             };
             try {
@@ -56,7 +56,7 @@ const Add = () => {
               className="w-[300px]  rounded-md border-[1px] border-slate-300"
             />
           </div>
-          <div>
+          {/* <div>
             <label>Add the ImageUrl</label>
             <input
               type="text"
@@ -65,7 +65,7 @@ const Add = () => {
               disabled={addArticle.isLoading}
               className={inputClasses}
             />
-          </div>
+          </div> */}
           <div>
             <label>Add the External Url</label>
             <input

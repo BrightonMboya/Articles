@@ -12,6 +12,5 @@ model Articles {
   id          String @id @default(cuid()) @db.VarChar(255)
   title       String @db.VarChar(255)
   description String @db.VarChar(255)
-  imageUrl    String @db.VarChar(255)
   externalUrl String @db.VarChar(255)
 }

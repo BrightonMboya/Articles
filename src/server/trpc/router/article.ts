@@ -9,7 +9,7 @@ const defaultArticleSelect = Prisma.validator<Prisma.ArticlesSelect>()({
     id: true,
     title: true,
     description: true,
-    imageUrl: true,
+    // imageUrl: true,
     externalUrl: true
     
 });
@@ -73,7 +73,7 @@ export const articleRouter = router({
                 title: string().min(1).max(30),
                 description: string().min(1).max(200),
                 externalUrl: string().min(1).max(200),
-                imageUrl: string().min(1).max(200),
+                // imageUrl: string().min(1).max(200),
         }),
     )
         .mutation(async ({ input }) => {

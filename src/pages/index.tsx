@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
+import { GetServerSideProps } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Fragment } from "react";
 import BlurImage from "../components/BlurImage";

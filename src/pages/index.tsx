@@ -20,6 +20,7 @@ const Home: NextPage = () => {
     }
   );
   const command: string = "npm create-t3-app@latest";
+  const { data: sessionData, status } = useSession();
 
   return (
     <>
@@ -30,8 +31,23 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="min-h-screen  bg-[#232231] font-montserrat ">
-        <nav>
+        <nav className="flex items-center justify-between">
           <h3 className="p-5 text-2xl font-light text-white ">T3 Stack</h3>
+          {sessionData ? (
+            <Link
+              href="/addData"
+              className="cursor-pointer rounded-md bg-slate-500 px-4 py-2"
+            >
+              Add Data
+            </Link>
+          ) : (
+            <button
+              onClick={() => signIn("discord")}
+              className="cursor-pointer rounded-md bg-slate-500 px-4 py-2"
+            >
+              Login with Discord
+            </button>
+          )}
         </nav>
 
         <section>
@@ -45,7 +61,7 @@ const Home: NextPage = () => {
             </div>
           </article>
           <p className="font-regular mt-[2rem] text-center text-xl text-white">
-            Move from your crap MERN Stack and join the full stack Type safety
+            Move from your current stack and join the full stack Type safety
           </p>
           <div className="mt-[2rem] flex items-center justify-center">
             <code
@@ -89,7 +105,7 @@ const Home: NextPage = () => {
           {articlesQuery.data?.pages.map((page, index) => (
             <section
               key={index}
-              className="-center grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3"
+              className="-center mb-[2rem] grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3"
             >
               {page.items.map((item) => (
                 <div

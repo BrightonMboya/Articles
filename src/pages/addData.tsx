@@ -3,6 +3,7 @@ import React from "react";
 import { AppRouter } from "../server/trpc/router/_app";
 import { trpc } from "../utils/trpc";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 const Add = () => {
   const utils = trpc.useContext();
@@ -13,7 +14,7 @@ const Add = () => {
     },
   });
   const inputClasses =
-    "w-[300px] h-[40px] border-[1px] border-slate-300 rounded-md";
+    "w-[300px] h-[40px] border-[1px] border-slate-300 rounded-md focus:outline-none";
   const divClasses = "flex flex-col gap-2";
   const labelClasses = "text-lg text-gray-300";
   const { data: sessionData, status } = useSession();
@@ -28,6 +29,24 @@ const Add = () => {
 
   return (
     <React.Fragment>
+      <nav className="flex items-center justify-between bg-[#232231]">
+        <h3 className="p-5 text-2xl font-light text-white ">T3 Stack</h3>
+        {sessionData ? (
+          <Link
+            href="/addData"
+            className="cursor-pointer rounded-md bg-slate-500 px-4 py-2"
+          >
+            Add Data
+          </Link>
+        ) : (
+          <button
+            onClick={() => signIn("discord")}
+            className="cursor-pointer rounded-md bg-slate-500 px-4 py-2"
+          >
+            Login with Discord
+          </button>
+        )}
+      </nav>
       <main className="min-h-screen  bg-[#232231]">
         {sessionData ? (
           <>
@@ -37,12 +56,14 @@ const Add = () => {
                   <span>Logged in as {sessionData.user?.name}</span>
                 )}
               </p>
-              <button
-                onClick={() => signOut()}
-                className="cursor-pointer rounded-md bg-slate-500 px-4 py-2"
-              >
-                Logout
-              </button>
+              <div className="mt-5 flex items-center justify-center">
+                <button
+                  onClick={() => signOut()}
+                  className="cursor-pointer rounded-md bg-slate-500 px-4 py-2"
+                >
+                  Logout
+                </button>
+              </div>
             </div>
 
             <form
@@ -82,19 +103,10 @@ const Add = () => {
                   name="description"
                   id="description"
                   disabled={addArticle.isLoading}
-                  className="w-[300px]  rounded-md border-[1px] border-slate-300"
+                  className="w-[300px]  rounded-md border-[1px] border-slate-300 focus:outline-none"
                 />
               </div>
-              {/* <div>
-            <label>Add the ImageUrl</label>
-            <input
-              type="text"
-              name="imageUrl"
-              id="imageUrl"
-              disabled={addArticle.isLoading}
-              className={inputClasses}
-            />
-          </div> */}
+
               <div className={divClasses}>
                 <label className={labelClasses}>Add the External Url</label>
                 <input
